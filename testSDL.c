@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
 	while(1) {
 		fenetre = SDL_SetVideoMode(500,500,32,SDL_HWSURFACE);
 	}	
+	/* On libère la mémoire */
 	SDL_FreeSurface(fenetre);
 	/* on quitte et vide la mémoire */	
 	SDL_Quit(); 
