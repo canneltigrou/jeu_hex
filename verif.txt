@@ -1,0 +1,174 @@
+FONCTION_1
+
+\play R 2 10
+\play B 1 9
+\play R 2 9
+\play B 4 8
+\play R 2 8
+\play B 5 6
+\play R 2 7
+\play B 0 6
+\play R 2 6
+\play B 1 6 /* verif que gagnant==personne -> verif bleu relié à rouge */ //verif1
+
+\play R 2 5 
+\play B 3 5
+\play R 2 4
+\play B 5 4
+\play R 2 3
+\play B 5 3
+\play R 2 2
+\play B 6 1
+\play R 2 1
+\play B 4 1
+
+R 2 0	/* verif que mon gagnant est rouge */ //verif2
+
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+FONCTION_2
+
+\play R 3 5
+\play B 6 5
+\play R 3 6
+\play B 5 6
+\play R 3 7
+\play B 5 7
+\play R 0 10
+\play B 5 8
+\play R 1 9
+\play B 5 9
+\play R 2 8
+\play B 6 6
+\play R 3 4
+\play B 3 3
+\play R 5 2
+\play B 4 4
+\play R 5 3
+\play B 3 2
+\play R 5 4
+\play B 6 3
+\play R 4 5
+\play B 7 2
+\play R 4 0
+\play B 3 0
+\play R 4 1
+\play B 1 3
+
+R 4 2		/* verif que mon gagnant est rouge*/ //verif3
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+FONCTION_3
+
+\play R 0 0
+\play B 0 10
+\play R 10 0
+\play B 10 10	/* verif gagnant == personne -> verif des coins*/ //verif4
+
+\play R 1 7
+\play B 0 9
+\play R 2 7
+\play B 2 8
+\play R 3 7
+\play B 4 8
+\play R 5 7
+\play B 6 8
+\play R 7 7
+\play B 8 8
+\play R 9 7
+\play B 10 8
+\play R 6 5
+\play B 9 9
+\play R 8 5
+\play B 8 9
+\play R 9 5
+\play B 7 8
+\play R 7 4
+\play B 5 9
+\play R 5 5
+\play B 4 10
+\play R 4 5
+\play B 4 9
+\play R 3 5
+\play B 3 8
+\play R 2 4
+
+B 1 8		/* verif gagnant == bleu */	//verif5
+
+TESTS pour gagnant -> 5tests.
+
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+FONCTION_4
+
+\play R 2 10
+\play B 1 9
+\play R 2 9		/* verif historique->x == 2 && historique->y == 9*/ //verif6
+
+\play B 4 8
+\play R 2 8
+\play B 5 6
+\play R 2 7
+\play B 0 6
+\play R 2 6
+\play B 1 6 
+
+undo.			/* verif plateau[1][6] == vide*/ //verif7
+				/* verif historique->x == 2 && historique->y == 6 */ -> maj historique //verif8
+
+\play B 4 4
+\play R 1 6		/* verif plateau[1][6] == rouge_ch_H*/ //verif9
+
+undo *14		
+
+\play R 2 10	/* verif undo sur vide -> pas de seg fault */ //verif10
+
+
+TESTS pour undo et historique -> 5tests.
+
+
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+FONCTION_5
+
+\play R 2 3
+\play B 3 4
+\play R 4 3
+
+sauvegarde
+\play B 0 6
+\play R 2 6
+
+quitter
+reprendre
+
+/* verif plateau[2][3] == rouge && plateau[3][4] == bleu && plateau[4][3] == rouge && plateau[0][6] == vide && plateau[2][6] == vide 	*/ -> sauvegarde //verif11
+
+
+\play B 0 6
+\play R 2 6
+
+quitter
+quitter
+relancer
+
+reprendre 
+/* verif plateau[2][3] == rouge && plateau[3][4] == bleu && plateau[4][3] == rouge && plateau[0][6] == vide && plateau[2][6] == vide 	*/ -> sauvegarde //verif12
+
+
+TEST sauvegarde et reprise -> 2 tests
+
+
+
+
+
+
+
+
+
+
